@@ -20,7 +20,7 @@ class ReggaetonOnline(scrapy.Spider):
             new_url = self.base_url + author_name + '_liricas-2'
             yield Request(url=new_url,meta={'item':reggaetonLyricsScrapperItem},
                 callback=self.parse_songs)
-        return
+        return None
 
     def parse_songs(self,response):
         songs = response.xpath('//a[contains(@class,"NORM")][1]/text()').extract()
@@ -34,21 +34,14 @@ class ReggaetonOnline(scrapy.Spider):
                     new_url = self.base_url + song_name + '_liricas'
                     yield Request(url=new_url,meta={'item':reggaetonLyricsScrapperItem },
                     callback=self.parse_lyrics)
-        return
+        return None
 
     def parse_lyrics(self,response):
         text = response.xpath('//div[@id="artist_main"]//p[last()]/text()').extract()
-        rating = response.xpath('//div[@id="artist_main"]/div[1]/div/small/span/text()').extract()
-        try:
-            lyric = ''.join([str(x) for x in text]).lower().rstrip('\r\n').strip()
-            if lyric:
-                reggaetonLyricsScrapperItem = response.meta['item']
-                reggaetonLyricsScrapperItem = reggaetonLyricsScrapperItem.copy()
-                reggaetonLyricsScrapperItem['lyric'] = lyric
-                print '****' * 30
-                print rating
-                return reggaetonLyricsScrapperItem
-        except Exception as e:
-            print str(e)
-            sys.exit()
+        lyric = ''.join([str(x) for x in text]).lower().rstrip('\r\n').strip()
+        if lyric:
+            reggaetonLyricsScrapperItem = response.meta['item']
+            reggaetonLyricsScrapperItem = reggaetonLyricsScrapperItem.copy()
+            reggaetonLyricsScrapperItem['lyric'] = lyric
+            return reggaetonLyricsScrapperItem
         return None
