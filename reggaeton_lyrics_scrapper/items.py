@@ -9,6 +9,7 @@ import scrapy
 
 
 class ReggaetonLyricsScrapperItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+    name = scrapy.Field()
+    author = scrapy.Field()
+    lyric = scrapy.Field()
     pass
