@@ -12,6 +12,4 @@ class ReggaetonLyricsScrapperItem(scrapy.Item):
     name = scrapy.Field()
     author = scrapy.Field()
     lyric = scrapy.Field()
-    rating = scrapy.Field()
-    date = scrapy.Field()
     pass
