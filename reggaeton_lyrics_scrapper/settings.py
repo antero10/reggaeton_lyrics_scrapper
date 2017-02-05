@@ -64,9 +64,14 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'reggaeton_lyrics_scrapper.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'reggaeton_lyrics_scrapper.pipelines.MongoDBPipeline': 300
+}
+
+MONGODB_SERVER = "mongo"
+MONGODB_PORT = 27017
+MONGODB_DB = "reggaeton"
+MONGODB_COLLECTION = "songs"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
