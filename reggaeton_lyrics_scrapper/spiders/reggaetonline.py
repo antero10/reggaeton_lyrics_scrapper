@@ -20,7 +20,7 @@ class ReggaetonOnline(scrapy.Spider):
             new_url = self.base_url + author_name + '_liricas-2'
             yield Request(url=new_url,meta={'item':reggaetonLyricsScrapperItem},
                 callback=self.parse_songs)
-        return None
+        return 
 
     def parse_songs(self,response):
         songs = response.xpath('//a[contains(@class,"NORM")][1]/text()').extract()
@@ -34,7 +34,7 @@ class ReggaetonOnline(scrapy.Spider):
                     new_url = self.base_url + song_name + '_liricas'
                     yield Request(url=new_url,meta={'item':reggaetonLyricsScrapperItem },
                     callback=self.parse_lyrics)
-        return None
+        return 
 
     def parse_lyrics(self,response):
         text = response.xpath('//div[@id="artist_main"]//p[last()]/text()').extract()
@@ -44,4 +44,4 @@ class ReggaetonOnline(scrapy.Spider):
             reggaetonLyricsScrapperItem = reggaetonLyricsScrapperItem.copy()
             reggaetonLyricsScrapperItem['lyric'] = lyric
             return reggaetonLyricsScrapperItem
-        return None
+        return 
