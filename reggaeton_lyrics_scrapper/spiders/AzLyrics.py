@@ -33,7 +33,7 @@ class AZ(scrapy.Spider):
                     callback=self.parse_lyric)
         return
     def parse_lyric(self,response):
-        lyric = response.xpath('//div[contains(@class,"col-xs-12 col-lg-8 text-center")]//div[5]/text()')
+        lyric = response.xpath('//div[contains(@class,"col-xs-12 col-lg-8 text-center")]//div[5]/text()').extract()
         if lyric:
             print lyric
             reggaetonLyricsScrapperItem = response.meta['item']
