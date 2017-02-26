@@ -2,10 +2,8 @@ version: '2'
 services:
   scrapper:
     build: .
-    command: scrapy crawl ReggaetonOnline
+    command: python start.py
     links:
       - "mongo:mongo"
-    volumes:
-      - "./:/usr/src/app/"
   mongo:
     image: mongo
