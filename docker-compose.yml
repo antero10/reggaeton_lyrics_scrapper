@@ -7,3 +7,5 @@ services:
       - "mongo:mongo"
   mongo:
     image: mongo
+    volumes:
+      - "./opt/mongodb:/data/db"
