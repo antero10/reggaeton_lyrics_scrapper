@@ -15,3 +15,10 @@ First you need to install the dependencies:
 
 * `pip install -f requirements.txt`
 * And start the scrapper with `python start.py`
+
+
+
+# Pages used
+
+* [Reggaeton Online](http://www.reggaetonline.net/)
+* [AzLyrics](http://www.azlyrics.com)
