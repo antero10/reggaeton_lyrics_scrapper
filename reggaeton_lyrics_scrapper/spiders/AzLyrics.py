@@ -28,14 +28,12 @@ class AZ(scrapy.Spider):
                 reggaetonLyricsScrapperItem = response.meta['item']
                 reggaetonLyricsScrapperItem = reggaetonLyricsScrapperItem.copy()
                 reggaetonLyricsScrapperItem['name'] = song
-                print song
                 yield Request(url=self.get_lyric_url(reggaetonLyricsScrapperItem['author'],song),meta={'item':reggaetonLyricsScrapperItem},
                     callback=self.parse_lyric)
         return
     def parse_lyric(self,response):
         lyric = response.xpath('//div[contains(@class,"col-xs-12 col-lg-8 text-center")]//div[5]/text()').extract()
         if lyric:
-            print lyric
             reggaetonLyricsScrapperItem = response.meta['item']
             reggaetonLyricsScrapperItem = reggaetonLyricsScrapperItem.copy()
             reggaetonLyricsScrapperItem['lyric'] = lyric
