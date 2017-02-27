@@ -2,7 +2,7 @@ import scrapy
 from scrapy.http.request import Request
 from reggaeton_lyrics_scrapper.items import ReggaetonLyricsScrapperItem
 
-class AZ(scrapy.Spider):
+class AZLyrics(scrapy.Spider):
     name = 'azlyrics'
     base_url = 'http://www.azlyrics.com/'
     # This is to get any reggaeton artis from wikipedia and start look them in azlyrics
