@@ -18,7 +18,7 @@ First you need to install the dependencies:
 
 
 
-# Pages that get data
+# Pages used
 
 * [Reggaeton Online](http://www.reggaetonline.net/)
 * [AzLyrics](http://www.azlyrics.com)
